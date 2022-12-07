@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <h1>Demostrating code of google pie chart </h1>
+  </head>
+  <body>
+
+    <div id="chart"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Daily Activity');
+        data.addColumn('number', 'Hours');
+        data.addRows([
+          ['{{act1}}', {{t1}}],
+          ['{{act2}}', {{t2}}],
+          ['{{act3}}', {{t3}}]
+        ]);
+        
+        var options = {'title': '{{title}}',
+                       'width': '{{wt}}',
+                       'height': '{{ht}}'
+                      }
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>
+
+
+
