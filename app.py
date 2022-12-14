@@ -27,3 +27,7 @@ def get_data__show_chart():
     return render_template('form.html', name='form')
 
 
+
+
+if __name__ == "__main__":
+    app.run()
