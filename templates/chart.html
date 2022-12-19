@@ -1,19 +1,21 @@
 <html>
   <head>
-    <h1>Demostrating code of google pie chart </h1>
+    <h1>Data Representation by using Pie charts</h1>
   </head>
   <body>
-
-    <div id="chart"></div>
-
+    <div style="border: 1px solid black;">
+      <div id="simple_chart"></div>
+      <div id="3dchart"></div>
+      <div id="donut_chart"></div>
+    </div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
       google.charts.load('current', {'packages':['corechart']});
 
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawCharts);
 
-      function drawChart() {
+      function drawCharts() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Daily Activity');
         data.addColumn('number', 'Hours');
@@ -22,18 +24,38 @@
           ['{{act2}}', {{t2}}],
           ['{{act3}}', {{t3}}]
         ]);
-        
-        var options = {'title': '{{title}}',
-                       'width': '{{wt}}',
-                       'height': '{{ht}}'
-                      }
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart'));
-        chart.draw(data, options);
+        var options_1 = {
+                       'title' : 'Simple Chart',
+                       'width' : '{{wt}}',
+                       'height': '{{ht}}'
+        }
+
+        var options_2 = {
+                      'title' : '3D Chart',
+                      'width' : '{{wt}}',
+                      'height': '{{ht}}',
+                      'is3D'  : true,
+        }
+
+        var options_3 = {
+                    'title' : 'Donut Chart',
+                    'width' : '{{wt}}',
+                    'height': '{{ht}}',
+                    'pieHole': 0.4,
+                  }
+
+        var simple_chart = new google.visualization.PieChart(document.getElementById('simple_chart'));
+        simple_chart.draw(data, options_1);
+
+
+        var _3dchart = new google.visualization.PieChart(document.getElementById('3dchart'));
+        _3dchart.draw(data, options_2);
+
+        var donut_chart = new google.visualization.PieChart(document.getElementById('donut_chart'));
+        donut_chart.draw(data, options_3);
+
       }
     </script>
   </body>
 </html>
-
-
-
